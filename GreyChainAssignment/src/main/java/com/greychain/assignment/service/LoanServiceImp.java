@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,5 +55,21 @@ public class LoanServiceImp implements LoanService{
     public List<Aggregation> getData() {
         return loanRepository.getAggregateData();
 
+    }
+
+
+    @Override
+    public boolean getCrossFlag() {
+        LocalDate currentDate = LocalDate.now();
+
+        List<LoanEntity> loans = findAll();
+
+        for (LoanEntity loan:loans
+             ) {
+            if (!currentDate.isBefore(loan.getDue_date())){
+                return false;
+            }
+        }
+        return true;
     }
 }

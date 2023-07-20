@@ -15,4 +15,6 @@ public interface LoanService {
     LoanEntity findLoan(Integer loan_id);
 
     List<Aggregation> getData();
+
+    boolean getCrossFlag();
 }
