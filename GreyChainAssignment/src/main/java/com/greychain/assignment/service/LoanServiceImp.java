@@ -1,6 +1,7 @@
 package com.greychain.assignment.service;
 
 import com.greychain.assignment.dao.LoanRepository;
+import com.greychain.assignment.entity.Aggregation;
 import com.greychain.assignment.entity.LoanEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,11 @@ public class LoanServiceImp implements LoanService{
         }
 
         return loan;
+    }
+
+    @Override
+    public List<Aggregation> getData() {
+        return loanRepository.getAggregateData();
+
     }
 }
