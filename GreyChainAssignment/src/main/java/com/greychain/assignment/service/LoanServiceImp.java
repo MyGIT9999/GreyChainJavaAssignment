@@ -28,7 +28,6 @@ public class LoanServiceImp implements LoanService{
         if (paymentDate.isBefore(dueDate)) {
             loanRepository.save(loan);
         } else {
-            // we didn't find the employee
             throw new RuntimeException("Payment date can not be greater than due date, The Loan is rejected");
         }
 
@@ -46,7 +45,6 @@ public class LoanServiceImp implements LoanService{
         if (result.isPresent()) {
             loan = result.get();
         } else {
-            // we didn't find the employee
             throw new RuntimeException("Did not find employee id - " + loan_id);
         }
 
